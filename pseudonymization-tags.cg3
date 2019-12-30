@@ -10,7 +10,6 @@
 ## This is the list of large places that do not need to be removed
 
 LIST LARGE-PLACES = "Азербайджан" "Башкирия" "Большеземельская" "Германия", "Голландия" "Канада" "Киров" "Кольский" "Куопио" "Лапландия" "Ленинград" "Малоземельская" "Мезень" "Мексико" "Москва" "Перм" "Печера" "Печора" "Салехард" "Санкт-Петербург" "Сомбатхей" "Сыктывкар" "Тайланд" "Ухта" "Хельсинки" "Япония" ;
-
 LIST SMALL-PLACE = Sem/Plc ;
 
 ## There are places such as Ёль, which are a well known small village in Izhma region of Komi Republic,
@@ -33,12 +32,19 @@ ADD:find-dates-with-born (ps-Date) TARGET (Num) OR (Ord) ((-1* ("чужны")) O
 
 ADD:mark-names (ps-Name) TARGET (Prop) ((0 (Sem/Mal)) OR (0 (Sem/Fem)) OR (0 (Sem/Patr)) OR (0 (Sem/Sur))) ; 
 
+## Since the rules above are not sufficient to detect years and dates correctly,
+## we have decided to remove those more radically in this point. Further refinement
+## of the system will try to elaborate this.
+
+ADD:find-ordinal-numbers (ps-Number) TARGET (Ord) ;
+
 ## There are instances where words that cannot be names do get tagged.
 ## This is probably due to some foreign names being included into the lexicon,
 ## which is of course a correc thing to do. But as we know these are never names
 ## in our corpus, let's remove some of the most common cases.
 ## This list needs to be extended, especially cases like "Кар" cause lots of
 ## unnecessary readings.
+
 
 LIST IMPOSSIBLE-NAMES = 
 "Баска" "Беда" "Бураке" "Ватага" "Воим" "Дона" "Иг" "Кар" "Коз" "Кос" "Куим" "Лок" "Пап" "Школа" "Юр"
