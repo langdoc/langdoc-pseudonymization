@@ -30,7 +30,7 @@ ADD:find-dates-with-years (ps-Date) TARGET (Num) OR (Ord) (1* ("во")) ;
 
 ADD:find-dates-with-born (ps-Date) TARGET (Num) OR (Ord) ((-1* ("чужны")) OR (-1* ("рӧдитчывны")) OR (-1* ("рӧдитчыны"))) ;
 
-ADD:mark-names (ps-Name) TARGET (Prop) ((0 (Sem/Mal)) OR (0 (Sem/Fem)) OR (0 (Sem/Patr)) OR (0 (Sem/Sur))) ; 
+ADD:mark-names (ps-Name) TARGET (Prop) ((0 (Sem/Mal)) OR (0 (Sem/Fem)) OR (0 (Sem/Patr)) OR (0 (Sem/Sur) OR (0 (Sem/Sur-Mal) OR (0 (Sem/Sur-Fem))) ; 
 
 ## Since the rules above are not sufficient to detect years and dates correctly,
 ## we have decided to remove those more radically in this point. Further refinement
