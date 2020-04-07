@@ -10,7 +10,9 @@
 ## This is the list of large places that do not need to be removed
 
 LIST LARGE-PLACES = "Азербайджан" "Башкирия" "Большеземельская" "Германия", "Голландия" "Канада" "Киров" "Кольский" "Куопио" "Лапландия" "Ленинград" "Малоземельская" "Мезень" "Мексико" "Москва" "Перм" "Печера" "Печора" "Салехард" "Санкт-Петербург" "Сомбатхей" "Сыктывкар" "Тайланд" "Ухта" "Хельсинки" "Япония" ;
+LIST GENERIC-TERMS = "Правда" "Владимирскей" "Боголюбскей" ;
 LIST SMALL-PLACE = Sem/Plc ;
+LIST BASIC-NUMBERS = "мӧд" ;
 
 ## There are places such as Ёль, which are a well known small village in Izhma region of Komi Republic,
 ## but also mean simply 'stream'. This kind of names are discussed in the article, and the decision for
@@ -30,7 +32,7 @@ ADD:find-dates-with-years (ps-Date) TARGET (Num) OR (Ord) (1* ("во")) ;
 
 ADD:find-dates-with-born (ps-Date) TARGET (Num) OR (Ord) ((-1* ("чужны")) OR (-1* ("рӧдитчывны")) OR (-1* ("рӧдитчыны"))) ;
 
-ADD:mark-names (ps-Name) TARGET (Prop) ((0 (Sem/Mal)) OR (0 (Sem/Fem)) OR (0 (Sem/Patr)) OR (0 (Sem/Sur) OR (0 (Sem/Sur-Mal) OR (0 (Sem/Sur-Fem))) ; 
+ADD:mark-names (ps-Name) TARGET (Prop) ((0 (Sem/Mal)) OR (0 (Sem/Fem)) OR (0 (Sem/Patr)) OR (0 (Sem/Patr-Mal)) OR (0 (Sem/Patr-Fem)) OR (0 (Sem/Sur)) OR (0 (Sem/Sur-Mal)) OR (0 (Sem/Sur-Fem))) ; 
 
 ## Since the rules above are not sufficient to detect years and dates correctly,
 ## we have decided to remove those more radically in this point. Further refinement
@@ -46,8 +48,21 @@ ADD:find-ordinal-numbers (ps-Number) TARGET (Ord) ;
 ## unnecessary readings.
 
 
-LIST IMPOSSIBLE-NAMES = 
-"Баска" "Беда" "Бураке" "Ватага" "Воим" "Дона" "Иг" "Кар" "Коз" "Кос" "Куим" "Лок" "Пап" "Школа" "Юр"
+# Пока should had lost the tag now
+# Бабай
+# Комин
+
+# These get now only Name reading:
+
+# Бурак Второй Верес Пастух
+# Меня Мало Ниче Один Ахо Бедные Большая Великий Готов Дорогая Золотое Печень
+
+# This is more difficult category:
+# Волам > Вов N Prop Sem/Mal Sg Ill PxSg1
+
+# Probably a typo: Сие
+
+LIST IMPOSSIBLE-NAMES = "Али" "Бабай" "Баска" "Беда" "Бура" "Бурак" "Буран" "Брак" "Ваго" "Ватага" "Воим" "Вон" "Дата" "Дона" "Горай" "Гусь" "Иг" "Кёрк" "Кар" "Карл" "Карим" "Класс" "Кино" "Коз" "Комин" "Кос" "Кора" "Куим" "Кукла" "Мач" "Машин" "Ной" "Ли" "Лок" "Пап" "Пок" "Пока" "Тат" "Стойка" "Школа" "Юр" "Ы" ;
 
 REMOVE IMPOSSIBLE-NAMES ;
 
